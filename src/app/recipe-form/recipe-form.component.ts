@@ -67,15 +67,27 @@ export class RecipeFormComponent implements OnInit {
     newRecipe.ingredients = this.recipeForm.get('ingredients').value;
     newRecipe.time = this.recipeForm.get('time').value;
     newRecipe.difficulty = this.recipeForm.get('difficulty').value;
-    this.recipeService.saveRecipe(newRecipe).subscribe(
-      () => {
-        this.router.navigate(['/']);
-      },
-      (error) => {
-        this.loading = false;
-        this.errorMessage = error.message;
-      }
-    );
+    if (this.mode === 'new') {
+      this.recipeService.saveRecipe(newRecipe).subscribe(
+        () => {
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          this.loading = false;
+          this.errorMessage = error.message;
+        }
+      );
+    } else if (this.mode === 'modify') {
+      this.recipeService.modifyRecipe(this.recipe._id, newRecipe).subscribe(
+        () => {
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          this.loading = false;
+          this.errorMessage = error.message;
+        }
+      );
+    }
   }
 
 }

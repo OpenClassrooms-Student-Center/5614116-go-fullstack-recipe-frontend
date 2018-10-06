@@ -23,7 +23,7 @@ export class RecipeService {
   }
 
   getSingleRecipe(id: string) {
-    return this.http.get('http://localhost:3000/api/recipe/' + id);
+    return this.http.get('http://localhost:3000/api/recipes/' + id);
   }
 
   saveRecipe(recipe: Recipe) {

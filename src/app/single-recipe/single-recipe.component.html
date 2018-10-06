@@ -8,7 +8,7 @@
     <h3 class="mat-h3">Instructions</h3>
     <p>{{ recipe?.instructions }}</p>
     <h3 class="mat-h3">Difficulty</h3>
-    <div [ngSwitch]="recipe.difficulty" style="margin-bottom: 2em;">
+    <div [ngSwitch]="recipe?.difficulty" style="margin-bottom: 2em;">
       <div *ngSwitchCase="1">
         <span class="fa fa-burn"></span>
       </div>
