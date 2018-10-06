@@ -1,0 +1,24 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<mat-card *ngIf="!loading">
+  <h1 class="mat-display-1" *ngIf="mode === 'new'">New Recipe</h1>
+  <h1 class="mat-display-1" *ngIf="mode === 'modify'">Modify Recipe</h1>
+  <form [formGroup]="recipeForm">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Ingredients" rows="6" formControlName="ingredients"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Instructions" rows="6" formControlName="instructions"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Time to prepare (minutes)" type="number" min="0" formControlName="time">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Difficulty (1-5)" type="number" min="0" max="5" formControlName="difficulty">
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="recipeForm.invalid" (click)="onSubmit()">Submit</button>
+    <p>{{ errorMessage }}</p>
+  </form>
+</mat-card>

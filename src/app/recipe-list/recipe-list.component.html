@@ -1,0 +1,48 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<mat-card *ngIf="!loading">
+  <h1 mat-card-title>Recipes</h1>
+  <mat-card-subtitle>All of your favourites!</mat-card-subtitle>
+  <mat-card-content *ngIf="recipes.length <= 0">
+    <p>No recipes to show!</p>
+  </mat-card-content>
+  <mat-card-content *ngIf="recipes.length > 0">
+    <mat-expansion-panel *ngFor="let recipe of recipes">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3>{{ recipe.title }}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h3 class="mat-h3">Time</h3>
+      <p>{{ recipe.time }} minutes to prepare</p>
+      <h3 class="mat-h3">Difficulty</h3>
+      <div [ngSwitch]="recipe.difficulty" style="margin-bottom: 2em;">
+        <div *ngSwitchCase="1">
+          <span class="fa fa-burn"></span>
+        </div>
+        <div *ngSwitchCase="2">
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+        </div>
+        <div *ngSwitchCase="3">
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+        </div>
+        <div *ngSwitchCase="4">
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+        </div>
+        <div *ngSwitchCase="5">
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+          <span class="fa fa-burn"></span>
+        </div>
+      </div>
+      <button (click)="onOpenRecipe(recipe._id)" mat-raised-button color="accent">See recipe</button>
+    </mat-expansion-panel>
+  </mat-card-content>
+</mat-card>
